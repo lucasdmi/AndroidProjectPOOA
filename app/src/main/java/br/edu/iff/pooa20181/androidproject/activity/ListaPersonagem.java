@@ -1,5 +1,6 @@
 package br.edu.iff.pooa20181.androidproject.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -59,6 +60,12 @@ public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerV
 
     @Override
     public void onClick(Object object) {
-
+        Personagem personagem = (Personagem) object;
+        Intent intent = new Intent(ListaPersonagem.this, PersonagemDetalhe.class);
+        intent.putExtra("nome", personagem.getNome());
+        intent.putExtra("classe", personagem.getClasse());
+        intent.putExtra("raca", personagem.getRaca());
+        intent.putExtra("nivel", personagem.getNivel());
+        startActivity(intent);
     }
 }
