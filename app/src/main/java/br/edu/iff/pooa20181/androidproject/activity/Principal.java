@@ -10,9 +10,9 @@ import android.widget.ListView;
 
 import pooa20181.iff.edu.br.androidprojectpooa.R;
 
-public class PrimeiraActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class Principal extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private String[] activities = {"ListaEventoActivity"};
+    private String[] activities = {"ListaPersonagem"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

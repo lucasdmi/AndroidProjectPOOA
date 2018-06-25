@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="br.edu.iff.pooa20181.androidproject.activity.PrimeiraActivity">
+        <activity android:name="br.edu.iff.pooa20181.androidproject.activity.Principal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListaPersonagemActivity"
+            android:name="br.edu.iff.pooa20181.androidproject.activity.ListaPersonagem"
             android:label="@string/title_activity_lista_personagem"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

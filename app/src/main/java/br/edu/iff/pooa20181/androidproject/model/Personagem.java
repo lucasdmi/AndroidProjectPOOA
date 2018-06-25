@@ -13,7 +13,7 @@ public class Personagem {
 
     }
 
-    public Personagem(int id, String nome, String  classe)
+    public Personagem(int id, String nome, String  classe, String raca, int nivel)
     {
         this.id = id;
         this.nome = nome;

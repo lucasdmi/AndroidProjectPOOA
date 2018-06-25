@@ -13,6 +13,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import br.edu.iff.pooa20181.androidproject.activity.ListaPersonagem;
 import br.edu.iff.pooa20181.androidproject.model.Personagem;
 import pooa20181.iff.edu.br.androidprojectpooa.R;
 
@@ -22,7 +23,7 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
     private static ClickRecyclerViewListener clickRecyclerViewListener;
 
 
-    public PersonagemAdapter(List<Personagem> personagens, ClickRecyclerViewListener clickRecyclerViewListener)
+    public PersonagemAdapter(List<Personagem> personagens, ListaPersonagem recyclerViewListener, ClickRecyclerViewListener clickRecyclerViewListener)
     {
             this.personagens = personagens;
             this.context = context;
@@ -42,7 +43,7 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         PersonagemViewHolder personagemViewHolder = (PersonagemViewHolder) viewHolder;
 
-        Personagem personagem = personagens.get(position);
+        Personagem personagem = this.personagens.get(position);
         personagemViewHolder.nomePersonagem.setText(personagem.getNome());
         personagemViewHolder.nivelPersonagem.setText(personagem.getNivel());
         personagemViewHolder.classePersonagem.setText(personagem.getClasse());
@@ -51,7 +52,7 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
-        return this.personagens.size();
+        return personagens.size();
     }
 
 
