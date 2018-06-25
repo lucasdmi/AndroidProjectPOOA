@@ -22,6 +22,14 @@ public class Personagem {
     public Personagem(){
 
     }
+    public Personagem(int id, String nome, String classe, String raca, int nivel){
+        this.id = id;
+        this.nome = nome;
+        this.classe = classe;
+        this.nivel = nivel;
+        this.raca = raca;
+
+    }
 
     public Personagem(int id, String nome, String  classe, String raca, int nivel, int forca, int destreza,
                       int constituicao, int inteligencia, int carisma, int sabedoria, int experiencia, int armadura, String background)

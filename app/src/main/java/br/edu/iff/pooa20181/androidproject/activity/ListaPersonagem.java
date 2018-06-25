@@ -50,7 +50,7 @@ public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerV
         for(i=0;i<20;i++)
         {
             String iv = String.valueOf(i);
-            Personagem personagem =  new Personagem(i, "nome".concat(iv), "classe".concat(iv));
+            Personagem personagem =  new Personagem(i, "nome" .concat(iv), "classe" .concat(iv), "raca" .concat(iv),i);
             personagens.add(personagem);
         }
 
