@@ -4,8 +4,14 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import br.edu.iff.pooa20181.androidproject.model.Personagem;
+
+import io.realm.Realm;
 import pooa20181.iff.edu.br.androidprojectpooa.R;
 
 public class PersonagemDetalhe extends AppCompatActivity {
@@ -15,25 +21,36 @@ public class PersonagemDetalhe extends AppCompatActivity {
 
     TextInputEditText textBG;
 
+    Button btnSalvar, btnAlterar, btnExcluir;
+
+    int id;
+    Personagem personagem;
+    private Realm realm;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personagem_detalhe);
 
-        edtNome = (EditText)findViewById(R.id.edtNome);
-        edtClasse = (EditText)findViewById(R.id.edtClasse);
-        edtRaca = (EditText) findViewById(R.id.edtRaca);
-        edtNivel = (EditText)findViewById(R.id.edtNivel);
-        edtExperiencia = (EditText)findViewById(R.id.edtExperiencia);
-        edtForca = (EditText)findViewById(R.id.edtForca);
-        edtConstituicao = (EditText)findViewById(R.id.edtConstituicao);
-        edtCarisma = (EditText)findViewById(R.id.edtCarisma);
-        edtInteligencia = (EditText)findViewById(R.id.edtInteligencia);
-        edtSabedoria = (EditText)findViewById(R.id.edtSabedoria);
-        edtDestreza = (EditText)findViewById(R.id.edtDestreza);
-        edtArmadura = (EditText)findViewById(R.id.edtArmadura);
 
-        textBG = (TextInputEditText)findViewById(R.id.textBG);
+        edtNome = (EditText) findViewById(R.id.edtNome);
+        edtClasse = (EditText) findViewById(R.id.edtClasse);
+        edtRaca = (EditText) findViewById(R.id.edtRaca);
+        edtNivel = (EditText) findViewById(R.id.edtNivel);
+        edtExperiencia = (EditText) findViewById(R.id.edtExperiencia);
+        edtForca = (EditText) findViewById(R.id.edtForca);
+        edtConstituicao = (EditText) findViewById(R.id.edtConstituicao);
+        edtCarisma = (EditText) findViewById(R.id.edtCarisma);
+        edtInteligencia = (EditText) findViewById(R.id.edtInteligencia);
+        edtSabedoria = (EditText) findViewById(R.id.edtSabedoria);
+        edtDestreza = (EditText) findViewById(R.id.edtDestreza);
+        edtArmadura = (EditText) findViewById(R.id.edtArmadura);
+
+        textBG = (TextInputEditText) findViewById(R.id.textBG);
+        btnSalvar = (Button) findViewById(R.id.btnSalvar);
+        btnAlterar = (Button) findViewById(R.id.btnAlterar);
+        btnExcluir = (Button) findViewById(R.id.btnExcluir);
 
         Intent intent = getIntent();
         edtNome.setText((String) intent.getSerializableExtra("nome"));
@@ -41,5 +58,122 @@ public class PersonagemDetalhe extends AppCompatActivity {
         edtRaca.setText((String) intent.getSerializableExtra("Raca"));
         edtNivel.setText((Integer) intent.getSerializableExtra("Nivel"));
 
+        id = (int) intent.getSerializableExtra("id");
+        realm = Realm.getDefaultInstance();
+
+        if (id != 0) {
+            btnSalvar.setEnabled(false);
+            btnSalvar.setClickable(false);
+            btnSalvar.setVisibility(View.INVISIBLE);
+
+            personagem = realm.where(Personagem.class).equalTo("id", id).findFirst();
+
+            edtNome.setText(personagem.getNome());
+            edtClasse.setText(personagem.getClasse());
+            edtRaca.setText(personagem.getRaca());
+            edtNivel.setText(personagem.getNivel());
+            edtForca.setText(personagem.getForca());
+            edtArmadura.setText(personagem.getArmadura());
+            edtDestreza.setText(personagem.getDestreza());
+            edtSabedoria.setText(personagem.getSabedoria());
+            edtInteligencia.setText(personagem.getInteligencia());
+            edtCarisma.setText(personagem.getCarisma());
+            edtConstituicao.setText(personagem.getConstituicao());
+            edtExperiencia.setText(personagem.getExperiencia());
+            textBG.setText(personagem.getBackground());
+        } else {
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            btnAlterar.setClickable(false);
+            btnExcluir.setClickable(false);
+            btnAlterar.setVisibility(View.INVISIBLE);
+            btnExcluir.setVisibility(View.INVISIBLE);
+
+        }
+
+
+        btnSalvar.setOnClickListener( new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                salvar();
+            }
+        });
+
+        btnAlterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alterar();
+            }
+        });
+
+        btnExcluir.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view)
+            {
+
+            }
+        });
+
+    }
+
+    public void salvar(){
+
+        int proximoID = 1;
+        if(realm.where(Personagem.class).max("id") != null)
+        {
+            proximoID = realm.where(Personagem.class).max("id").intValue()+1;
+        }
+        realm.beginTransaction();
+        Personagem personagem = new Personagem();
+        personagem.setId(proximoID);
+
+        realm.copyFromRealm(personagem);
+        realm.commitTransaction();
+        realm.close();
+
+        Toast.makeText(this,"Personagem Cadastrado", Toast.LENGTH_LONG).show();
+        this.finish();
+
+    }
+
+    public void alterar(){
+        realm.beginTransaction();
+
+        setarEgravar(personagem);
+
+        realm.copyFromRealm(personagem);
+        realm.commitTransaction();
+        realm.close();
+
+        Toast.makeText(this,"Personagem Cadastrado", Toast.LENGTH_LONG).show();
+        this.finish();
+    }
+    public void excluir()
+    {
+        realm.beginTransaction();
+        personagem.deleteFromRealm();
+        realm.commitTransaction();
+        realm.close();
+
+        Toast.makeText(this,"Personagem Cadastrado", Toast.LENGTH_LONG).show();
+        this.finish();
+    }
+
+    public void setarEgravar(Personagem personagem)
+    {
+        edtNome.setText(edtNome.getText().toString());
+        edtClasse.setText(edtClasse.getText().toString());
+        edtRaca.setText(edtRaca.getText().toString());
+
+        edtNivel.setText(Integer.parseInt(edtNivel.getText().toString()));
+        edtForca.setText(Integer.parseInt(edtForca.getText().toString()));
+        edtArmadura.setText(Integer.parseInt(edtArmadura.getText().toString()));
+        edtDestreza.setText(Integer.parseInt(edtDestreza.getText().toString()));
+        edtSabedoria.setText(Integer.parseInt(edtSabedoria.getText().toString()));
+        edtInteligencia.setText(Integer.parseInt(edtInteligencia.getText().toString()));
+        edtCarisma.setText(Integer.parseInt(edtCarisma.getText().toString()));
+        edtConstituicao.setText(Integer.parseInt(edtConstituicao.getText().toString()));
+        edtExperiencia.setText(Integer.parseInt(edtExperiencia.getText().toString()));
+        textBG.setText(textBG.getText().toString());
     }
 }
