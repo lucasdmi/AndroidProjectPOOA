@@ -1,6 +1,13 @@
 package br.edu.iff.pooa20181.androidproject.model;
 
-public class Personagem {
+import java.io.Serializable;
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Personagem extends RealmObject implements Serializable{
+
+    @PrimaryKey
     private int id;
     private String nome;
     private String classe;
