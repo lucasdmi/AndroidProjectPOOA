@@ -13,12 +13,13 @@ import pooa20181.iff.edu.br.androidprojectpooa.R;
 public class Principal extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private String[] activities = {"ListaPersonagem"};
+    private String[] itemMenu = {"Personagem"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primeira);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, activities);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, itemMenu);
 
                 ListView listView = (ListView) findViewById(R.id.listaMenu);
                 listView.setAdapter(adapter);

@@ -32,7 +32,7 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_personagem, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_personagem_cv, parent, false);
         PersonagemViewHolder personagemViewHolder = new PersonagemViewHolder(view);
         return personagemViewHolder;
     }
