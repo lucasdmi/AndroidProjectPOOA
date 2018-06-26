@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 
@@ -21,6 +22,7 @@ import io.realm.Realm;
 
 
 public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerViewListener {
+
     private Realm realm;
 
     @Override
@@ -31,7 +33,9 @@ public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerV
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         realm = Realm.getDefaultInstance();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,9 +49,8 @@ public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerV
 
 
     }
-        public void onResume(){
+        protected void onResume(){
             super.onResume();
-
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvPersonagens);
             recyclerView.setAdapter(new PersonagemAdapter(getPersonagens(), this, this));
 

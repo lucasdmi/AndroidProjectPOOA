@@ -12,15 +12,17 @@ public class Personagem extends RealmObject implements Serializable{
     private String nome;
     private String classe;
     private String raca;
-    private int nivel;
-    private int forca;
-    private int destreza;
-    private int constituicao;
-    private int inteligencia;
-    private int carisma;
-    private int sabedoria;
-    private int experiencia;
-    private int armadura;
+    private String nivel;
+    private String forca;
+    private String destreza;
+    private String constituicao;
+    private String inteligencia;
+
+
+    private String carisma;
+    private String sabedoria;
+    private String experiencia;
+    private String armadura;
     private String background;
 
 
@@ -29,7 +31,7 @@ public class Personagem extends RealmObject implements Serializable{
     public Personagem(){
 
     }
-    public Personagem(int id, String nome, String classe, String raca, int nivel){
+    public Personagem(int id, String nome, String classe, String raca, String nivel){
         this.id = id;
         this.nome = nome;
         this.classe = classe;
@@ -38,8 +40,8 @@ public class Personagem extends RealmObject implements Serializable{
 
     }
 
-    public Personagem(int id, String nome, String  classe, String raca, int nivel, int forca, int destreza,
-                      int constituicao, int inteligencia, int carisma, int sabedoria, int experiencia, int armadura, String background)
+    public Personagem(int id, String nome, String  classe, String raca, String nivel, String forca, String destreza,
+                      String constituicao, String inteligencia, String carisma, String sabedoria, String experiencia, String armadura, String background)
     {
         this.id = id;
         this.nome = nome;
@@ -57,79 +59,6 @@ public class Personagem extends RealmObject implements Serializable{
         this.sabedoria = sabedoria;
 
     }
-
-    public int getForca() {
-        return forca;
-    }
-
-    public void setForca(int forca) {
-        this.forca = forca;
-    }
-
-    public int getDestreza() {
-        return destreza;
-    }
-
-    public void setDestreza(int destreza) {
-        this.destreza = destreza;
-    }
-
-    public int getConstituicao() {
-        return constituicao;
-    }
-
-    public void setConstituicao(int constituicao) {
-        this.constituicao = constituicao;
-    }
-
-    public int getInteligencia() {
-        return inteligencia;
-    }
-
-    public void setInteligencia(int inteligencia) {
-        this.inteligencia = inteligencia;
-    }
-
-    public int getCarisma() {
-        return carisma;
-    }
-
-    public void setCarisma(int carisma) {
-        this.carisma = carisma;
-    }
-
-    public int getSabedoria() {
-        return sabedoria;
-    }
-
-    public void setSabedoria(int sabedoria) {
-        this.sabedoria = sabedoria;
-    }
-
-    public int getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
-    }
-
-    public int getArmadura() {
-        return armadura;
-    }
-
-    public void setArmadura(int armadura) {
-        this.armadura = armadura;
-    }
-
-    public String getBackground() {
-        return background;
-    }
-
-    public void setBackground(String background) {
-        this.background = background;
-    }
-
 
     public int getId() {
         return id;
@@ -163,15 +92,85 @@ public class Personagem extends RealmObject implements Serializable{
         this.raca = raca;
     }
 
-
-    public int getNivel() {
+    public String getNivel() {
         return nivel;
     }
 
-    public void setNivel(int nivel) {
+    public void setNivel(String nivel) {
         this.nivel = nivel;
     }
 
+    public String getForca() {
+        return forca;
+    }
+
+    public void setForca(String forca) {
+        this.forca = forca;
+    }
+
+    public String getDestreza() {
+        return destreza;
+    }
+
+    public void setDestreza(String destreza) {
+        this.destreza = destreza;
+    }
+
+    public String getConstituicao() {
+        return constituicao;
+    }
+
+    public void setConstituicao(String constituicao) {
+        this.constituicao = constituicao;
+    }
+
+    public String getInteligencia() {
+        return inteligencia;
+    }
+
+    public void setInteligencia(String inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public String getCarisma() {
+        return carisma;
+    }
+
+    public void setCarisma(String carisma) {
+        this.carisma = carisma;
+    }
+
+    public String getSabedoria() {
+        return sabedoria;
+    }
+
+    public void setSabedoria(String sabedoria) {
+        this.sabedoria = sabedoria;
+    }
+
+    public String getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(String experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public String getArmadura() {
+        return armadura;
+    }
+
+    public void setArmadura(String armadura) {
+        this.armadura = armadura;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
 
 
 

@@ -6,6 +6,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,14 +51,15 @@ public class PersonagemDetalhe extends AppCompatActivity {
         edtSabedoria = (EditText) findViewById(R.id.edtSabedoria);
         edtDestreza = (EditText) findViewById(R.id.edtDestreza);
         edtArmadura = (EditText) findViewById(R.id.edtArmadura);
-
         textBG = (TextInputEditText) findViewById(R.id.textBG);
+
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
         btnAlterar = (Button) findViewById(R.id.btnAlterar);
         btnExcluir = (Button) findViewById(R.id.btnExcluir);
 
         Intent intent = getIntent();
         id = (int) intent.getSerializableExtra("id");
+
         realm = Realm.getDefaultInstance();
 
         if (id != 0) {
@@ -122,14 +124,18 @@ public class PersonagemDetalhe extends AppCompatActivity {
         {
             proximoID = realm.where(Personagem.class).max("id").intValue()+1;
         }
+
         realm.beginTransaction();
         Personagem personagem = new Personagem();
         personagem.setId(proximoID);
 
         setarEgravar(personagem);
 
-        realm.copyFromRealm(personagem);
+
+        realm.copyToRealm(personagem);
+
         realm.commitTransaction();
+
         realm.close();
 
         Toast.makeText(this,"Personagem Cadastrado", Toast.LENGTH_LONG).show();
@@ -143,6 +149,8 @@ public class PersonagemDetalhe extends AppCompatActivity {
         setarEgravar(personagem);
 
         realm.copyFromRealm(personagem);
+
+        System.out.println(personagem);
         realm.commitTransaction();
         realm.close();
 
@@ -162,19 +170,21 @@ public class PersonagemDetalhe extends AppCompatActivity {
 
     public void setarEgravar(Personagem personagem)
     {
+        Log.i("msg", "teste salvar");
         edtNome.setText(edtNome.getText().toString());
         edtClasse.setText(edtClasse.getText().toString());
         edtRaca.setText(edtRaca.getText().toString());
-
-        edtNivel.setText(Integer.parseInt(edtNivel.getText().toString()));
-        edtForca.setText(Integer.parseInt(edtForca.getText().toString()));
-        edtArmadura.setText(Integer.parseInt(edtArmadura.getText().toString()));
-        edtDestreza.setText(Integer.parseInt(edtDestreza.getText().toString()));
-        edtSabedoria.setText(Integer.parseInt(edtSabedoria.getText().toString()));
-        edtInteligencia.setText(Integer.parseInt(edtInteligencia.getText().toString()));
-        edtCarisma.setText(Integer.parseInt(edtCarisma.getText().toString()));
-        edtConstituicao.setText(Integer.parseInt(edtConstituicao.getText().toString()));
-        edtExperiencia.setText(Integer.parseInt(edtExperiencia.getText().toString()));
+        edtNivel.setText(edtNivel.getText().toString());
+        edtForca.setText(edtForca.getText().toString());
+        edtArmadura.setText(edtArmadura.getText().toString());
+        edtDestreza.setText(edtDestreza.getText().toString());
+        edtSabedoria.setText(edtSabedoria.getText().toString());
+        edtInteligencia.setText(edtInteligencia.getText().toString());
+        edtCarisma.setText(edtCarisma.getText().toString());
+        edtConstituicao.setText(edtConstituicao.getText().toString());
+        edtExperiencia.setText(edtExperiencia.getText().toString());
         textBG.setText(textBG.getText().toString());
+
+
     }
 }
