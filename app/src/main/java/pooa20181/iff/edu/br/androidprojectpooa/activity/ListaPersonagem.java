@@ -1,40 +1,43 @@
-package br.edu.iff.pooa20181.androidproject.activity;
+package pooa20181.iff.edu.br.androidprojectpooa.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import java.util.ArrayList;
+
+
 import java.util.List;
 
-import br.edu.iff.pooa20181.androidproject.adapter.ClickRecyclerViewListener;
-import br.edu.iff.pooa20181.androidproject.adapter.PersonagemAdapter;
-import br.edu.iff.pooa20181.androidproject.model.Personagem;
-import io.realm.Realm;
 import pooa20181.iff.edu.br.androidprojectpooa.R;
+import pooa20181.iff.edu.br.androidprojectpooa.adapter.ClickRecyclerViewListener;
+import pooa20181.iff.edu.br.androidprojectpooa.adapter.PersonagemAdapter;
+import pooa20181.iff.edu.br.androidprojectpooa.model.Personagem;
+import io.realm.Realm;
 
-public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerViewListener{
+
+public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerViewListener {
     private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_personagem);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         realm = Realm.getDefaultInstance();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ListaPersonagem.this, Personagem.class);
+                Intent intent = new Intent(ListaPersonagem.this, PersonagemDetalhe.class);
                 intent.putExtra("id", 0);
                 startActivity(intent);
             }

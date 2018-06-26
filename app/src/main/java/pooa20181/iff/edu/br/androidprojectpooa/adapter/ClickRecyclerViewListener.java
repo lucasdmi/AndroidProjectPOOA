@@ -1,4 +1,4 @@
-package br.edu.iff.pooa20181.androidproject.adapter;
+package pooa20181.iff.edu.br.androidprojectpooa.adapter;
 
 public interface ClickRecyclerViewListener {
 

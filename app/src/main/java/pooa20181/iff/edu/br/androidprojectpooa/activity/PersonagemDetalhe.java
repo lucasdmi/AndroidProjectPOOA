@@ -1,6 +1,8 @@
-package br.edu.iff.pooa20181.androidproject.activity;
+package pooa20181.iff.edu.br.androidprojectpooa.activity;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,10 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import br.edu.iff.pooa20181.androidproject.model.Personagem;
+
 
 import io.realm.Realm;
+
 import pooa20181.iff.edu.br.androidprojectpooa.R;
+import pooa20181.iff.edu.br.androidprojectpooa.model.Personagem;
 
 public class PersonagemDetalhe extends AppCompatActivity {
 
@@ -27,7 +31,7 @@ public class PersonagemDetalhe extends AppCompatActivity {
     Personagem personagem;
     private Realm realm;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +126,8 @@ public class PersonagemDetalhe extends AppCompatActivity {
         Personagem personagem = new Personagem();
         personagem.setId(proximoID);
 
+        setarEgravar(personagem);
+
         realm.copyFromRealm(personagem);
         realm.commitTransaction();
         realm.close();
@@ -140,7 +146,7 @@ public class PersonagemDetalhe extends AppCompatActivity {
         realm.commitTransaction();
         realm.close();
 
-        Toast.makeText(this,"Personagem Cadastrado", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Personagem Alterado", Toast.LENGTH_LONG).show();
         this.finish();
     }
     public void excluir()
@@ -150,7 +156,7 @@ public class PersonagemDetalhe extends AppCompatActivity {
         realm.commitTransaction();
         realm.close();
 
-        Toast.makeText(this,"Personagem Cadastrado", Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Personagem Excluido", Toast.LENGTH_LONG).show();
         this.finish();
     }
 

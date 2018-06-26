@@ -1,4 +1,4 @@
-package br.edu.iff.pooa20181.androidproject.activity;
+package pooa20181.iff.edu.br.androidprojectpooa.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import pooa20181.iff.edu.br.androidprojectpooa.R;
+
 
 public class Principal extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
@@ -32,11 +33,11 @@ public class Principal extends AppCompatActivity implements AdapterView.OnItemCl
         Intent intent = null;
 
                       try {
-                          Class obj = Class.forName ("br.edu.iff.pooa20181.androidproject.activity."+activities[position]);
+                          Class obj = Class.forName ("pooa20181.iff.edu.br.androidprojectpooa." + activities[position]);
                                intent = new Intent(this, obj);
 
                       } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
+                            e.printStackTrace();
                         }
 
                         startActivity(intent);
