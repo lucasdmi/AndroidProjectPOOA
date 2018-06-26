@@ -16,56 +16,60 @@ import java.util.List;
 import br.edu.iff.pooa20181.androidproject.adapter.ClickRecyclerViewListener;
 import br.edu.iff.pooa20181.androidproject.adapter.PersonagemAdapter;
 import br.edu.iff.pooa20181.androidproject.model.Personagem;
+import io.realm.Realm;
 import pooa20181.iff.edu.br.androidprojectpooa.R;
 
 public class ListaPersonagem extends AppCompatActivity implements ClickRecyclerViewListener{
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_personagem);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        realm = Realm.getDefaultInstance();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(ListaPersonagem.this, Personagem.class);
+                intent.putExtra("id", 0);
+                startActivity(intent);
             }
         });
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvPersonagens);
-        recyclerView.setAdapter(new PersonagemAdapter(getPersonagens(), this, this));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+        public void onResume(){
+            super.onResume();
+
+            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvPersonagens);
+            recyclerView.setAdapter(new PersonagemAdapter(getPersonagens(), this, this));
+
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        }
 
 
 
     public List<Personagem> getPersonagens(){
-        List<Personagem> personagens = new ArrayList<Personagem>();
-        int i = 0;
 
-        for(i=0;i<20;i++)
-        {
-            String iv = String.valueOf(i);
-            Personagem personagem =  new Personagem(i, "nome" .concat(iv), "classe" .concat(iv), "raca" .concat(iv),i);
-            personagens.add(personagem);
-        }
-
-        return personagens;
+        return (List) realm.where(Personagem.class).findAll();
     }
 
     @Override
     public void onClick(Object object) {
         Personagem personagem = (Personagem) object;
         Intent intent = new Intent(ListaPersonagem.this, PersonagemDetalhe.class);
-        intent.putExtra("nome", personagem.getNome());
-        intent.putExtra("classe", personagem.getClasse());
-        intent.putExtra("raca", personagem.getRaca());
-        intent.putExtra("nivel", personagem.getNivel());
+        intent.putExtra("id", personagem.getId());
         startActivity(intent);
+    }
+
+    public void finish()
+    {
+        super.finish();
+        realm.close();
     }
 }

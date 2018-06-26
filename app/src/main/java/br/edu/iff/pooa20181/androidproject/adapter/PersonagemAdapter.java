@@ -56,6 +56,10 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
     }
 
 
+
+
+
+
     public class PersonagemViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView nomePersonagem;
@@ -80,8 +84,4 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
 
        }
    }
-
-
-
-
 }

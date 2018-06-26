@@ -53,11 +53,6 @@ public class PersonagemDetalhe extends AppCompatActivity {
         btnExcluir = (Button) findViewById(R.id.btnExcluir);
 
         Intent intent = getIntent();
-        edtNome.setText((String) intent.getSerializableExtra("nome"));
-        edtClasse.setText((String) intent.getSerializableExtra("Classe"));
-        edtRaca.setText((String) intent.getSerializableExtra("Raca"));
-        edtNivel.setText((Integer) intent.getSerializableExtra("Nivel"));
-
         id = (int) intent.getSerializableExtra("id");
         realm = Realm.getDefaultInstance();
 
@@ -110,7 +105,7 @@ public class PersonagemDetalhe extends AppCompatActivity {
         btnExcluir.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view)
             {
-
+                excluir();
             }
         });
 
