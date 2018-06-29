@@ -17,21 +17,18 @@ public class Personagem extends RealmObject implements Serializable{
     private String destreza;
     private String constituicao;
     private String inteligencia;
-
-
     private String carisma;
     private String sabedoria;
     private String experiencia;
     private String armadura;
     private String background;
 
-
-
-
     public Personagem(){
-
     }
+
+
     public Personagem(int id, String nome, String classe, String raca, String nivel){
+
         this.id = id;
         this.nome = nome;
         this.classe = classe;

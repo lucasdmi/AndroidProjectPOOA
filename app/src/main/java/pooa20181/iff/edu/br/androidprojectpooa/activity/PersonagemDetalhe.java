@@ -25,7 +25,6 @@ public class PersonagemDetalhe extends AppCompatActivity {
             edtCarisma, edtSabedoria, edtForca, edtDestreza, edtConstituicao, edtArmadura, edtInteligencia;
 
     TextInputEditText textBG;
-
     Button btnSalvar, btnAlterar, btnExcluir;
 
     int id;
@@ -128,14 +127,11 @@ public class PersonagemDetalhe extends AppCompatActivity {
         realm.beginTransaction();
         Personagem personagem = new Personagem();
         personagem.setId(proximoID);
-
         setarEgravar(personagem);
 
 
         realm.copyToRealm(personagem);
-
         realm.commitTransaction();
-
         realm.close();
 
         Toast.makeText(this,"Personagem Cadastrado", Toast.LENGTH_LONG).show();
@@ -170,19 +166,21 @@ public class PersonagemDetalhe extends AppCompatActivity {
     public void setarEgravar(Personagem personagem)
     {
         Log.i("msg", "teste salvar");
-        edtNome.setText(edtNome.getText().toString());
-        edtClasse.setText(edtClasse.getText().toString());
-        edtRaca.setText(edtRaca.getText().toString());
-        edtNivel.setText(edtNivel.getText().toString());
-        edtForca.setText(edtForca.getText().toString());
-        edtArmadura.setText(edtArmadura.getText().toString());
-        edtDestreza.setText(edtDestreza.getText().toString());
-        edtSabedoria.setText(edtSabedoria.getText().toString());
-        edtInteligencia.setText(edtInteligencia.getText().toString());
-        edtCarisma.setText(edtCarisma.getText().toString());
-        edtConstituicao.setText(edtConstituicao.getText().toString());
-        edtExperiencia.setText(edtExperiencia.getText().toString());
-        textBG.setText(textBG.getText().toString());
+
+        personagem.setNome(edtNome.getText().toString());
+        personagem.setClasse(edtClasse.getText().toString());
+        personagem.setRaca(edtRaca.getText().toString());
+        personagem.setNivel(edtNivel.getText().toString());
+
+        personagem.setForca(edtForca.getText().toString());
+        personagem.setArmadura(edtArmadura.getText().toString());
+        personagem.setDestreza(edtDestreza.getText().toString());
+        personagem.setSabedoria(edtSabedoria.getText().toString());
+        personagem.setInteligencia(edtInteligencia.getText().toString());
+        personagem.setCarisma(edtCarisma.getText().toString());
+        personagem.setConstituicao(edtConstituicao.getText().toString());
+        personagem.setExperiencia(edtExperiencia.getText().toString());
+        personagem.setBackground(textBG.getText().toString());
 
 
     }
