@@ -150,7 +150,6 @@ public class PersonagemDetalhe extends AppCompatActivity {
 
         realm.copyFromRealm(personagem);
 
-        System.out.println(personagem);
         realm.commitTransaction();
         realm.close();
 
