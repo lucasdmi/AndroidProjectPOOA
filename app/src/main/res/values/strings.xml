@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">AndroidProjectPOOA</string>
+    <string name="app_name">Personagem RPG</string>
     <string name="title_activity_lista_personagem">ListaPersonagem</string>
 </resources>

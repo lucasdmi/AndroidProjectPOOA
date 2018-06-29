@@ -5,24 +5,28 @@
     <application
         android:name=".model.BDConfig"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_rg_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_rg_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.Principal">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.ListaPersonagem"
             android:label="@string/title_activity_lista_personagem"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.PersonagemDetalhe" />
-        <activity android:name=".activity.SplashScreenActivity"></activity>
+
+        <!-- Splash screen -->
+        <activity
+            android:name=".activity.SplashScreenActivity"
+            android:theme="@style/AppCompat.TelaCheia">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
