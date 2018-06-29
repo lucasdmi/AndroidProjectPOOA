@@ -165,7 +165,7 @@ public class PersonagemDetalhe extends AppCompatActivity {
 
     public void setarEgravar(Personagem personagem)
     {
-        Log.i("msg", "teste salvar");
+
 
         personagem.setNome(edtNome.getText().toString());
         personagem.setClasse(edtClasse.getText().toString());

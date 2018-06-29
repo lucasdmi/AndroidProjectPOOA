@@ -21,7 +21,8 @@
             android:name=".activity.ListaPersonagem"
             android:label="@string/title_activity_lista_personagem"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.PersonagemDetalhe"></activity>
+        <activity android:name=".activity.PersonagemDetalhe" />
+        <activity android:name=".activity.SplashScreenActivity"></activity>
     </application>
 
 </manifest>

@@ -34,7 +34,7 @@ public class Principal extends AppCompatActivity implements AdapterView.OnItemCl
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-        Log.i("msg", "entrou");
+
         Intent intent = null;
 
                       try {
@@ -45,11 +45,11 @@ public class Principal extends AppCompatActivity implements AdapterView.OnItemCl
                             e.printStackTrace();
                         }
 
-        Log.i("msg", "clique lista");
+
                     intent = new Intent(this, ListaPersonagem.class);
-        Log.i("msg", "chamando 2 tela");
+
                         startActivity(intent);
-        Log.i("msg", "olá");
+
 
     }
 }
