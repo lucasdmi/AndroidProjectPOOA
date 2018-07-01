@@ -55,7 +55,7 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
 
         personagemHolder.nome.setText("Nome:");
         personagemHolder.classe.setText("Classe:");
-        personagemHolder.raca.setText("Raça");
+        personagemHolder.raca.setText("Raça:");
         personagemHolder.nivel.setText("Nível:");
 
 
