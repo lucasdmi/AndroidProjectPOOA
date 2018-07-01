@@ -2,4 +2,5 @@
     <string name="app_name">Personagem RPG</string>
     <string name="title_activity_lista_personagem">ListaPersonagem</string>
     <string name="logo_description">Logo Personagem</string>
+    <string name="img_add">Para adicionar a imagem clique aqui:</string>
 </resources>
