@@ -23,22 +23,25 @@ public class Personagem extends RealmObject implements Serializable{
     private String armadura;
     private String background;
 
+    private String imgPath;
+
     public Personagem(){
     }
 
 
-    public Personagem(int id, String nome, String classe, String raca, String nivel){
+    public Personagem(int id, String nome, String classe, String raca, String nivel, String imgPath){
 
         this.id = id;
         this.nome = nome;
         this.classe = classe;
         this.nivel = nivel;
         this.raca = raca;
+        this.imgPath = imgPath;
 
     }
 
     public Personagem(int id, String nome, String  classe, String raca, String nivel, String forca, String destreza,
-                      String constituicao, String inteligencia, String carisma, String sabedoria, String experiencia, String armadura, String background)
+                      String constituicao, String inteligencia, String carisma, String sabedoria, String experiencia, String armadura, String background, String imgPath)
     {
         this.id = id;
         this.nome = nome;
@@ -54,6 +57,7 @@ public class Personagem extends RealmObject implements Serializable{
         this.forca = forca;
         this.inteligencia = inteligencia;
         this.sabedoria = sabedoria;
+        this.imgPath = imgPath;
 
     }
 
@@ -167,6 +171,14 @@ public class Personagem extends RealmObject implements Serializable{
 
     public void setBackground(String background) {
         this.background = background;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
 

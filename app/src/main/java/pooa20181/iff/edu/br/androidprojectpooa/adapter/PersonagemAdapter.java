@@ -1,10 +1,13 @@
 package pooa20181.iff.edu.br.androidprojectpooa.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
@@ -46,6 +49,18 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
         personagemHolder.nivelPersonagem.setText(String.valueOf(personagem.getNivel()));
         personagemHolder.classePersonagem.setText(personagem.getClasse());
         personagemHolder.racaPersonagem.setText(personagem.getRaca());
+        personagemHolder.backgroundPersonagem.setText(personagem.getBackground());
+
+        personagemHolder.imagemPersonagem.setImageBitmap(BitmapFactory.decodeFile(personagem.getImgPath()));
+
+        personagemHolder.nome.setText("Nome:");
+        personagemHolder.classe.setText("Classe:");
+        personagemHolder.raca.setText("Raça");
+        personagemHolder.nivel.setText("Nível:");
+
+
+
+
     }
 
     @Override
@@ -64,6 +79,13 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
         private final TextView nivelPersonagem;
         private final TextView classePersonagem;
         private final TextView racaPersonagem;
+        private final TextView backgroundPersonagem;
+
+        private final TextView nome, nivel, classe, raca, background;
+        private final ImageView imagemPersonagem;
+
+
+
 
        public PersonagemViewHolder(View itemView) {
            super(itemView);
@@ -71,6 +93,16 @@ public class PersonagemAdapter extends RecyclerView.Adapter{
            nivelPersonagem = (TextView) itemView.findViewById(R.id.tvNivel);
            classePersonagem = (TextView) itemView.findViewById(R.id.tvClasse);
            racaPersonagem = (TextView) itemView.findViewById(R.id.tvRaca);
+           backgroundPersonagem = (TextView) itemView.findViewById(R.id.tvBackGround);
+           imagemPersonagem = (ImageView) itemView.findViewById(R.id.ivPersonagem);
+
+           nome = (TextView) itemView.findViewById(R.id.tNome);
+           classe = (TextView) itemView.findViewById(R.id.tClasse);
+           nivel = (TextView) itemView.findViewById(R.id.tNivel);
+           raca = (TextView) itemView.findViewById(R.id.tRaca);
+           background = (TextView) itemView.findViewById(R.id.tBG);
+
+
 
            itemView.setOnClickListener(new View.OnClickListener() {
                @Override
