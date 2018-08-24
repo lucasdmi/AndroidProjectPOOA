@@ -3,4 +3,6 @@
     <string name="title_activity_lista_personagem">ListaPersonagem</string>
     <string name="logo_description">Logo Personagem</string>
     <string name="img_add">Para adicionar a imagem clique aqui:</string>
+    <string name="sigin">Faça o seu login para continuar</string>
+    <string name="welcome">Seja bem vindo ao aplicativo</string>
 </resources>
